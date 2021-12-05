@@ -18,14 +18,20 @@ class Lead(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     age = models.IntegerField(default=0) 
-
+    ae = models.ForeignKey("AE", on_delete=models.CASCADE)
     # What were doing here is deleting the lead if the case our account executive gets
     # removed from the database
     # --TODO add warning what leads will be deleted when account executive is being deleted
     # After an hour of digging through documentation I realized that having this line under Account_executive means there can only be 
     # One lead per account executive. Nice Chris - I'm slowly going insane as I need to get a 100 and I usually get paid to be tortued in this fashion.
-    account_executive = models.ForeignKey("Account_Executive", on_delete=models.CASCADE)
+    
 
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
     # Table relationship code starts here
-    class Account_Executive(models.Model):
+    class AE(models.Model):
         user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+        def __str__(self):
+            return self.user.email
