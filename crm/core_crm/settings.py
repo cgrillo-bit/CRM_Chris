@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'leads',
 ]
 
 MIDDLEWARE = [
@@ -118,3 +119,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# This line of code is telling Django we have our own custom user model 
+AUTH_USER_MODEL = 'leads.User'

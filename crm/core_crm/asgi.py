@@ -1,9 +1,5 @@
 """
-ASGI config for core_crm project.
-
-It exposes the ASGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
+asynchronus database link
 https://docs.djangoproject.com/en/3.1/howto/deployment/asgi/
 """
 
