@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Lead, Account_executive
-from .forms import LeadFormModel
+from .forms import LeadForm, LeadFormModel
 # creating function based views here as prefered by django documentation
 
 # The home function creates the view for the homepage of the CRM
@@ -46,22 +46,40 @@ def create_lead(request):
             print("Form validation complete")
             print(form.cleaned_data)
 
-            # Using this cleaned data entered we can pass it to the Lead class as class Lead accepts a first_name, last_name, age, account_executive. 
-            # So this is basically grabbing the data entered from the form and keeping it on the server
-            first_name = form.cleaned_data['first_name']
-            last_name = form.cleaned_data['last_name']
-            age = form.cleaned_data['age']
-            # first grabs the first object in the table as we are just grabing the first account executive available for now. 
-            account_executive = Account_executive.objects.first() 
-            # this is the actual code that creates the lead in the database 
-            Lead.objects.create(
-                first_name = first_name,
-                last_name = last_name,
-                age = age,
-                account_executive = account_executive
-            )
+            # Django model form allows us to call the save method to save all data entered as a new lead, BAM. If you wanted to create your own lead you would need to
+            # declare each form entry specifically. 
+            form.save() 
             return redirect("/leads")
     context = {
         "form": form
     }
     return render(request, "leads/create_lead.html", context)
+
+# The update lead function is going to allow us to update existing leads, it takes in request (THESE FUNCTIONS WILL ALWAYS TAKE IN REQUEST AS IT IS A BROWSER REQUEST TO MANIPULATE XYZ)
+# We are also having the primary key as a paramater as that is how we are referring to the leads at this time. So basically we have the same function as the create lead however,
+# now on the LeadFormModel we are passing this a parameter called instance=lead, therefore when going to /update the field will be prepopulated. Very nice. 
+def update_lead(request, pk):
+    lead = Lead.objects.get(id=pk)
+    form = LeadFormModel(instance=lead)
+    if request.method == "POST":
+        form = LeadFormModel(request.POST, instance=lead)
+        if form.is_valid():
+            lead.save()
+            print("Form update complete")
+            return redirect("/leads")
+    context = {
+        "form": form,
+        "lead": lead,
+        
+    }
+    return render (request, "leads/update_lead.html", context)
+
+
+# The delete lead key does exactly what it says. It will grab the lead from the database. It is taking request and primary key as parameters as usual. We are going to grab
+# the referenced lead from the DB using that primary key and using a native Django method .delete() we will be able to delete this lead with no issues. After a lead is deleted
+# we are going to return a render back to the leads page, Workflow as followed: Select lead -> User goes to delete_lead view-> lead is deleted from DB and redirect back to page showing 
+# all of the leads. 
+def delete_lead(request, pk):
+    lead = Lead.objects.get(id=pk)
+    lead.delete() 
+    return redirect("/leads")

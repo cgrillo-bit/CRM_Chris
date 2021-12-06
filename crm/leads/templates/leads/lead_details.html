@@ -18,12 +18,15 @@
 </head> 
 
 <body>
-    <a href="/leads">Back to leads </a>
+    <a href="{%url 'leads:leads-home' %}">Back to leads </a>
     <hr />
     <!--Using Django syntax  to output keys and writing python to iterate through the keys and print all leads in an html list  --> 
     <!-- With this href we are going to be able to navigate through leads-->
     <h1>Lead details: {{ lead.first_name}} {{lead.last_name}}</h1>
     <p>Age: {{lead.age}}</p>
+    <p>Lead Owner: {{lead.account_executive}}</p>
     
+    <a href="{% url 'leads:update-lead' lead.pk %}">Update Lead</a>
+    <a href="{% url 'leads:delete-lead' lead.pk %}">Delete Lead</a>
 </body>
 </html> 

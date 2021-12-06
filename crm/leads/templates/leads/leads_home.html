@@ -18,14 +18,14 @@
 </head> 
 
 <body>
-    <a href="/leads/create/"> Generate new lead </a> 
+    <a href="{% url 'leads:create-lead' %}"> Generate new lead </a> 
     <hr / > 
     <h1>List of Leads</h1>
     <!--Using Django syntax  to output keys and writing python to iterate through the keys and print all leads in an html list  --> 
     <!-- With this href we are going to be able to navigate through leads-->
     {% for lead in leads %}
         <div class="lead">
-            <a href="/leads/{{ lead.pk }}/">{{lead.first_name}} {{ lead.last_name }}</a>
+            <a href="{% url 'leads:lead-details' lead.pk%}">{{lead.first_name}} {{ lead.last_name }}</a>
         </div> 
     {% endfor %} 
 </body>
