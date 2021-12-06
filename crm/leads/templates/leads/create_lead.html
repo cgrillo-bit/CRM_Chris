@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Create lead</title> 
+</head> 
+
+<body>
+    <a href="/leads">Back to leads </a>
+    <hr />
+    <!--Using Django syntax  to output keys and writing python to iterate through the keys and print all leads in an html list  --> 
+    <!-- With this href we are going to be able to navigate through leads-->
+    <h1>Create new lead </h1>
+    <!--Created a form with method POST as we need this to submit a form-->
+    <!--When you need to submit a form in Django you need to submit a csrf token-->
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Generate Lead</button> 
+    </form> 
+</body>
+</html> 
