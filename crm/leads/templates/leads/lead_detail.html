@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Leads</title> 
+    <style>
+        .lead {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 6px;
+            padding-right: 6px;
+            margin-top: 10px;
+            background-color: #d6d6d6;
+            width: 100%
+        }
+    </style>
+</head> 
+
+<body>
+    <h1>Lead details: {{ lead.first_name}}</h1>
+    <p>Lead age: {{lead.age}}</p>
+    <!--Using Django syntax  to output keys and writing python to iterate through the keys and print all leads in an html list  --> 
+    <!-- With this href we are going to be able to navigate through leads-->
+    {% for lead in leads %}
+        <div class="lead">
+            <a href="/leads/{{ lead.pk }}/">{{lead.first_name}} {{ lead.last_name }}</a>. Age: {{ lead.age }}
+        </div> 
+    {% endfor %} 
+</body>
+</html> 
