@@ -7,6 +7,12 @@
 </head> 
 <body>
     <h1>HTML template</h1>
-    <p>Gang shit</p>
+
+    <!--Using Django syntax  to output keys and writing python to iterate through the keys and print all leads in an html list  --> 
+    <ul>
+        {% for lead in leads %}
+        <li>{{ lead }}</li> 
+        {% endfor %} 
+    </ul>
 </body>
 </html> 
