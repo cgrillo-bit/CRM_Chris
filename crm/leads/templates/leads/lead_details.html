@@ -1,23 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Leads</title> 
-    <style>
-        .lead {
-            padding-top: 10px;
-            padding-bottom: 10px;
-            padding-left: 6px;
-            padding-right: 6px;
-            margin-top: 10px;
-            background-color: #d6d6d6;
-            width: 100%
-        }
-    </style>
-</head> 
+{% extends "base.html" %}
 
-<body>
+{% block content %}
     <a href="{%url 'leads:leads-home' %}">Back</a>
     <hr />
     <!--Using Django syntax  to output keys and writing python to iterate through the keys and print all leads in an html list  --> 
@@ -28,5 +11,4 @@
     
     <a href="{% url 'leads:update-lead' lead.pk %}">Update Lead</a>
     <a href="{% url 'leads:delete-lead' lead.pk %}">Delete Lead</a>
-</body>
-</html> 
+{% endblock content%}

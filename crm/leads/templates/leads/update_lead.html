@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Create lead</title> 
-</head> 
+{% extends "base.html" %}
 
-<body>
+{% block content %}
     <a href="{% url 'leads:lead-details' lead.pk %}">Back</a>
     <hr />
     <!--Using Django syntax  to output keys and writing python to iterate through the keys and print all leads in an html list  --> 
@@ -19,5 +13,4 @@
         {{ form.as_p }}
         <button type="submit">Update Lead</button> 
     </form> 
-</body>
-</html> 
+{% endblock content %}
