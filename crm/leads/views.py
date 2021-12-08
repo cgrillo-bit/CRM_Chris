@@ -4,6 +4,10 @@ from .models import Lead, Account_executive
 from .forms import LeadForm, LeadFormModel
 # creating function based views here as prefered by django documentation
 
+# the home_page function takes in a paramater of a request as usual. All it does it return a render for our homepage home.html 
+def home_page(request):
+    return render(request, "home.html")
+
 # The home function creates the view for the homepage of the CRM
 # it takes in a parameter of a request because Django. 
 # Django will provide the request to the function when a user goes to a specific page on the website 
