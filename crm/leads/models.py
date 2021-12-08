@@ -18,6 +18,7 @@ class Lead(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     age = models.IntegerField(default=0) 
+
     account_executive = models.ForeignKey("Account_executive", on_delete=models.CASCADE)
     # What were doing here is deleting the lead if the case our account executive gets
     # removed from the database
@@ -26,7 +27,7 @@ class Lead(models.Model):
     # One lead per account executive. Nice Chris - I'm slowly going insane as I need to get a 100 and I usually get paid to be tortued in this fashion.
     
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return f"{self.first_name} {self.last_name} {self.company}"
     # Table relationship code starts here
 class Account_executive(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

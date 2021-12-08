@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Lead, Account_executive
 from .forms import LeadForm, LeadFormModel
+import random 
 # creating function based views here as prefered by django documentation
+
+
 
 # the home_page function takes in a paramater of a request as usual. All it does it return a render for our homepage home.html 
 def home_page(request):
