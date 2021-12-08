@@ -120,6 +120,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_DIRS = [
+    BASE_DIR / "static"
+]
+
+STATIC_ROOT = "root_static"
+
 
 # This line of code is telling Django we have our own custom user model 
 AUTH_USER_MODEL = 'leads.User'
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+LOGIN_REDIRECT_URL = "/leads"

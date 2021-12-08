@@ -1,9 +1,20 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.views import generic
 from .models import Lead, Account_executive
 from .forms import LeadForm, LeadFormModel
-import random 
+from django.core.mail import send_mail
+from django.contrib.auth.forms import UserCreationForm
 # creating function based views here as prefered by django documentation
+
+
+
+class SignUp(generic.CreateView):
+    template_name = "registration/signup.html"
+    form_class = UserCreationForm
+
+    def get_success_url(self) -> str:
+        return super().get_success_url("login")
 
 
 
@@ -40,6 +51,7 @@ def lead_details(request, pk):
     }
     return render(request, "leads/lead_details.html", context)
 
+
 #The create_lead method takes in a request as a paramger. It will then assign form to the Lead form class I have created. I have a conditional handling POST as 
 # this is a form that creates a lead. If a POST does occur using is_valid Django will check the validity of this form (its a boolean), then using .cleaned_data it cleans 
 # the submitted data in a dictonary. As usual it returns a render along with a redirect. This is so when a lead is created it will take us back to the lead list. 
@@ -52,6 +64,12 @@ def create_lead(request):
         if form.is_valid():
             print("Form validation complete")
             print(form.cleaned_data)
+            send_mail(
+                subject="Lead created", 
+                message="Login to Sesame CRM to see this lead",
+                from_email="Chris-test@test.com",
+                recipient_list=["recipient-test@test.com"]
+            )
 
             # Django model form allows us to call the save method to save all data entered as a new lead, BAM. If you wanted to create your own lead you would need to
             # declare each form entry specifically. 
