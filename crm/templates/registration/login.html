@@ -1,17 +1,22 @@
 {% extends 'base.html' %}
 
+{% load tailwind_filters %}
+
 {% block content %}
+<section class="flex-grow text-indigo-400 border-b-2 border-indigo-500 py-2 text-lg px-1">
+<div class="max-w-lg mx-auto bg-grey-400">
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p}}
+
+    {{ form|crispy }}
 
     <button type="submit">Login</button>
     <hr /> 
-    <a href={% url 'password_reset' %}> Passwordo Forgetti? (It's in Italian) </a>
+    <a class="flex-grow text-indigo-400 border-b-2 border-indigo-500 py-2 text-lg px-1" href="{% url 'password_reset' %}"> Passwordo Forgetti? (It's in Italian) </a>
 </form>
 
-
-
+</div>
+</section> 
 {% endblock content %}
 
 
