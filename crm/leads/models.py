@@ -17,8 +17,8 @@ class Lead(models.Model):
     # Making a tuple for options that can be selected as a source 
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    company = models.CharField(max_length=40, default="company")
-    industry = models.CharField(max_length=30, default="industry")
+    company = models.CharField(max_length=40, default="")
+    industry = models.CharField(max_length=30, default="")
     phone_number = models.IntegerField(default=0)
      
     account_executive = models.ForeignKey("Account_executive", on_delete=models.CASCADE)

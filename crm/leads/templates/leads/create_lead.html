@@ -1,16 +1,23 @@
 {% extends "base.html" %}
  
 {% block content%}
-    <a href="{% url 'leads:leads-home' %}">Back  </a>
-    <hr />
-    <!--Using Django syntax  to output keys and writing python to iterate through the keys and print all leads in an html list  --> 
-    <!-- With this href we are going to be able to navigate through leads-->
-    <h1>Create new lead </h1>
-    <!--Created a form with method POST as we need this to submit a form-->
-    <!--When you need to submit a form in Django you need to submit a csrf token-->
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Generate Lead</button> 
-    </form> 
+<div class="bg-gray-700 py-32 px-10 min-h-screen ">
+    <!--   tip; mx-auto -- jagab ilusti keskele  -->
+    <div class="bg-indigo-500 p-10 md:w-3/4 lg:w-1/2 mx-auto">
+        <a href="{% url 'leads:leads-home' %}"> Back </a> 
+        <hr /> 
+      <form method="post">
+        <div class="justify flex items-center mb-5">
+          <!--         tip - here neede inline-block , but why? -->
+          <label for="name" class="justify-block w-20 mr-6 text-center
+                                   font-bold text-">{{form.as_p}}</label>
+        </div>
+  
+        <div class="text-right">
+          <button type="submit"class="py-3 px-8 bg-gray-500 text-white font-bold">Submit</button> 
+        </div>
+  
+      </form>
+    </div>
+  </div>
 {% endblock content %}
