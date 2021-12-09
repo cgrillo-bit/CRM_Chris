@@ -1,6 +1,6 @@
 from django import forms 
-from .models import Lead
-
+from .models import Lead, User
+from django.contrib.auth.forms import UserCreationForm, UsernameField
 
 # We are creating a form class from Django forms to use this whenever wee need a form. Lucky for us Django has this built in. I love this frameowkr
 class LeadFormModel(forms.ModelForm):
@@ -11,7 +11,9 @@ class LeadFormModel(forms.ModelForm):
         fields = (
             'first_name',
             'last_name',
-            'age',
+            'company',
+            'industry',
+            'phone_number',
             'account_executive',
         )
 
@@ -19,4 +21,13 @@ class LeadFormModel(forms.ModelForm):
 class LeadForm(forms.Form):
     first_name = forms.CharField()
     last_name = forms.CharField()
-    age = forms.IntegerField(min_value=1)
+    company = forms.CharField()
+    industry = forms.CharField()
+    phone_number = forms.IntegerField()
+
+
+class CUserCreateForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ("username",)
+        field_classes = {'username': UsernameField}

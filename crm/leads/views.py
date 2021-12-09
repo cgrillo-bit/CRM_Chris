@@ -1,20 +1,31 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.urls import reverse
+from django.contrib.auth import mixins
 from django.views import generic
 from .models import Lead, Account_executive
-from .forms import LeadForm, LeadFormModel
+from .forms import LeadFormModel, CUserCreateForm
 from django.core.mail import send_mail
-from django.contrib.auth.forms import UserCreationForm
+
 # creating function based views here as prefered by django documentation
 
 
 
 class SignUp(generic.CreateView):
     template_name = "registration/signup.html"
-    form_class = UserCreationForm
+    form_class = CUserCreateForm
 
-    def get_success_url(self) -> str:
-        return super().get_success_url("login")
+    def get_success_url(self):
+        return reverse("leads:leads-home")
+    
+    def form_valid(self, form):
+        send_mail(
+            subject="Lead creation initated",
+            message="Please log into Sesame CRM to see this lead", 
+            from_email="test@test.com",
+            recipient_list=["test2@test.com"]
+
+        )
+        return super(SignUp, self).form_valid(form)
 
 
 
