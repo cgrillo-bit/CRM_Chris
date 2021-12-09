@@ -12,6 +12,8 @@
             </div>
 
         </div> 
+       
+        
         
       <div class="flex flex-col text-center w-full mb-20">
       </div>
@@ -29,7 +31,7 @@
               <h2 class="text-white text-lg title-font font-medium">{{lead.first_name}} {{lead.last_name}} </h2>
             </div>
             <div class="flex-grow">
-              <p class="leading-relaxed text-base">Account Executive: {{lead.account_executive}} content content content content content content content content content content</p>
+              <p class="leading-relaxed text-base">Account Executive: {{lead.account_executive}} {{lead.company}} {{lead.industry}}</p>
               <a href="{% url 'leads:lead-details' lead.pk%}" class="mt-3 text-indigo-400 inline-flex items-center"> 
                   View 
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
@@ -39,6 +41,7 @@
             </div>
           </div>
         </div> 
+        
         {%endfor%}
     </div>
   </section>
