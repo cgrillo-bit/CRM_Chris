@@ -16,20 +16,22 @@
         
         <div class="flex border-t border-gray-800 py-2">
           <span class="text-gray-500">Company </span>
-          <span class="ml-auto text-white">COMPANY HERE</span>
+          <span class="ml-auto text-white">{{lead.company}}</span>
         </div>
         <div class="flex border-t border-gray-800 py-2">
-          <span class="text-gray-500">Industry</span>
-          <span class="ml-auto text-white">INDSUTRY HERE</span>
+          <span class="text-gray-500">Industry </span>
+          <span class="ml-auto text-white">{{lead.industry}}</span>
         </div>
         <div class="flex border-t border-gray-800 py-2">
           <span class="text-gray-500">Cell </span>
-          <span class="ml-auto text-white">+23421231231</span>
+          <span class="ml-auto text-white">{{lead.phone_number}}</span>
         </div>
-        <div class="flex border-t border-b mb-6 border-gray-800 py-2">
-          <span class="text-gray-500">Location</span>
-          <span class="ml-auto text-white">LOCATION HERE </span>
+        <div class="flex border-t border-gray-800 py-2">
+          <span class="text-gray-500">Lead Owner </span>
+          <span class="ml-auto text-white">{{lead.account_executive}}</span>
         </div>
+        
+        
         
         <div class="flex">
           <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Generate Opportunity</button>

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
- 
+
+{% load tailwind_filters %}
 {% block content%}
 <div class="bg-gray-700 py-32 px-10 min-h-screen ">
     <!--   tip; mx-auto -- jagab ilusti keskele  -->
@@ -7,10 +8,14 @@
         <a href="{% url 'leads:leads-home' %}"> Back </a> 
         <hr /> 
       <form method="post">
-        <div class="justify flex items-center mb-5">
+        <<div class="max-w-lg mx-auto">
           <!--         tip - here neede inline-block , but why? -->
+         
           <label for="name" class="justify-block w-20 mr-6 text-center
-                                   font-bold text-">{{form.as_p}}</label>
+                                   font-bold text-">
+                                   {% csrf_token %}
+                                   {{form|crispy}}
+                                  </label>
         </div>
   
         <div class="text-right">
