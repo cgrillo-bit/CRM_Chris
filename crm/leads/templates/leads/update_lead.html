@@ -1,5 +1,9 @@
-{% extends 'base.html' %}
+<!--This page is how we update leads. The update section on the details of the lead will allow the user to update the relevant information contained in the lead and this will generate on the
+kead details page. -->
 
+
+{% extends 'base.html' %}
+{% load tailwind_filters %}
 {% block content %}
 <section class="text-gray-400 bg-gray-900 body-font overflow-hidden">
   <div class="container px-5 py-24 mx-auto">
@@ -21,7 +25,7 @@
         </div>
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ form|crispy }}
             <button type="submit"> Save </button> 
         </form>
         
