@@ -3,7 +3,8 @@
 import os
 import sys
 
-
+# this is the main that was generated from django application this is a standard that we use for makemigrations along with migrations to create new fields in the database. 
+# This function does not return anything but instead reutns a command line execution call. 
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core_crm.settings')

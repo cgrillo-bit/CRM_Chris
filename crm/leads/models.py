@@ -25,15 +25,18 @@ class Lead(models.Model):
     account_executive = models.ForeignKey("Account_executive", on_delete=models.CASCADE)
     # What were doing here is deleting the lead if the case our account executive gets
     # removed from the database
-    # --TODO add warning what leads will be deleted when account executive is being deleted
     # After an hour of digging through documentation I realized that having this line under Account_executive means there can only be 
     # One lead per account executive. Nice Chris - I'm slowly going insane as I need to get a 100 and I usually get paid to be tortued in this fashion.
-    
+    # This __str__ function is just going to retunr fields first name, last name and company assigned 
     def __str__(self):
         return f"{self.first_name} {self.last_name} {self.company}"
     # Table relationship code starts here
+
+    # this class is hadling the account executives we have assinged note there is only one account executive in the system. The .CASCADE is being used such that 
+    # when a changes are made to the user model it will also delete anything attached to it 
 class Account_executive(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
+# We are using this function to reuturn the user email 
     def __str__(self):
         return self.user.email

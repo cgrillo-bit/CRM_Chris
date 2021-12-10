@@ -18,7 +18,7 @@ class LeadFormModel(forms.ModelForm):
             'description',
         )
 
-
+# This class is going to greate fields and columns in the database of the entries of the form 
 class LeadForm(forms.Form):
     first_name = forms.CharField()
     last_name = forms.CharField()
@@ -27,7 +27,7 @@ class LeadForm(forms.Form):
     phone_number = forms.IntegerField()
     description = forms.CharField() 
 
-
+# We are using this class to override the standard create user form. 
 class CUserCreateForm(UserCreationForm):
     class Meta:
         model = User
