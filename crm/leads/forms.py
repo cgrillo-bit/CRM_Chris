@@ -15,6 +15,7 @@ class LeadFormModel(forms.ModelForm):
             'industry',
             'phone_number',
             'account_executive',
+            'description',
         )
 
 
@@ -24,6 +25,7 @@ class LeadForm(forms.Form):
     company = forms.CharField()
     industry = forms.CharField()
     phone_number = forms.IntegerField()
+    description = forms.CharField() 
 
 
 class CUserCreateForm(UserCreationForm):

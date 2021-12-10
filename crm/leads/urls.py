@@ -8,7 +8,7 @@ from .views import lead_details, leads_home, create_lead, update_lead, delete_le
 app_name = "leads"
 
 urlpatterns = [
-    path('#', leads_home, name='leads-home'),
+    path('', leads_home, name='leads-home'),
     path('<int:pk>/', lead_details, name='lead-details'),
     path('<int:pk>/update/', update_lead, name='update-lead'),
     path('<int:pk>/delete/', delete_lead, name='delete-lead'),
