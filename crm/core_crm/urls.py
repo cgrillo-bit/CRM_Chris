@@ -12,13 +12,13 @@ urlpatterns = [
     path('', home_page, name='home-page'),
     # pointing to new urls file to handle specific path requests 
     path('leads/', include('leads.urls', namespace="leads")),
-    path('login/', LoginView.as_view(), name='login'),
-    path('logout/', LogoutView.as_view(), name='logout'),
     path('signup/', SignUp.as_view(), name='signup'),
     path('reset_password/', PasswordResetView.as_view(), name='password_reset'),
     path('password_reset_done/', PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('password_reset_confirm/<uidb64>/<token>/', PasswordResetConfirmView.as_view(), name='confirm-reset'),
     path('password_reset_complete/',  PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+    path('login/', LoginView.as_view(), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
 
 
 ]

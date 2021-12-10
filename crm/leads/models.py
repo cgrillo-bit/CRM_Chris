@@ -20,6 +20,7 @@ class Lead(models.Model):
     company = models.CharField(max_length=40, default="")
     industry = models.CharField(max_length=30, default="")
     phone_number = models.IntegerField(default=0)
+    description = models.CharField(max_length=500, default="")
      
     account_executive = models.ForeignKey("Account_executive", on_delete=models.CASCADE)
     # What were doing here is deleting the lead if the case our account executive gets

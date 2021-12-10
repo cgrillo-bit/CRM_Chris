@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.contrib.auth import mixins
 from django.views import generic
-from .models import Lead, Account_executive
+from .models import Lead
 from .forms import LeadFormModel, CUserCreateForm
 from django.core.mail import send_mail
 

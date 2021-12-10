@@ -3,13 +3,12 @@
 {% load tailwind_filters %}
 {% block content%}
 <div class="bg-gray-700 py-32 px-10 min-h-screen ">
-    <!--   tip; mx-auto -- jagab ilusti keskele  -->
-    <div class="bg-indigo-500 p-10 md:w-3/4 lg:w-1/2 mx-auto">
-        <a href="{% url 'leads:leads-home' %}"> Back </a> 
+  
+    <div class="bg-blue-500 p-10 md:w-3/4 lg:w-1/2 mx-auto">
+        <a href="{% url 'leads:leads-home' %}"> Back to Leads</a> 
         <hr /> 
       <form method="post">
         <<div class="max-w-lg mx-auto">
-          <!--         tip - here neede inline-block , but why? -->
          
           <label for="name" class="justify-block w-20 mr-6 text-center
                                    font-bold text-">
@@ -19,7 +18,7 @@
         </div>
   
         <div class="text-right">
-          <button type="submit"class="py-3 px-8 bg-gray-500 text-white font-bold">Submit</button> 
+          <button type="submit"class="py-3 px-8 bg-gray-500 text-white font-bold">Generate</button> 
         </div>
   
       </form>
